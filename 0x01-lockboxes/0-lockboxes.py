@@ -2,7 +2,8 @@
 
 
 def canUnlockAll(boxes):
-    """lockedbox algortithm"""
+    """lockedbox algorithm
+    to identify if all boxes can be opened"""
     all_boxes = []
     keys = boxes[0]
     not_opened = []
