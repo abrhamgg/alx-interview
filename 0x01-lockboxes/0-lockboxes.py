@@ -5,7 +5,11 @@ def canUnlockAll(boxes):
     """lockedbox algorithm
     to identify if all boxes can be opened
     :param boxes: list of list
+    :return: booleans
     """
+    if boxes is None:
+        return False
+    
     all_boxes = []
     keys = boxes[0]
     not_opened = []
