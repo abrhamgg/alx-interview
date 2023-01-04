@@ -3,7 +3,9 @@
 
 def canUnlockAll(boxes):
     """lockedbox algorithm
-    to identify if all boxes can be opened"""
+    to identify if all boxes can be opened
+    :param boxes: list of list
+    """
     all_boxes = []
     keys = boxes[0]
     not_opened = []
