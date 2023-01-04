@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""locked boxes"""
 
 def canUnlockAll(boxes):
     """lockedbox algorithm
