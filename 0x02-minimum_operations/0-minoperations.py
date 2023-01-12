@@ -24,4 +24,4 @@ def minOperations(n):
     if (n % op == 0):
         return int(op) * 2
     if int(op) >= 1:
-        return (int(op) * 2) + 1
+        return (int(op) * 2) + round(op - 2)
