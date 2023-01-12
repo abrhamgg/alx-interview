@@ -11,9 +11,17 @@ def minOperations(n):
     calculates the fewest number of operations needed to result in
     exactly n H characters in the file."""
 
+    factor = 0
     if n <= 1:
         return 0
+    for i in range(2, int(n/2)+1):
+        if (n % i) == 0:
+            factor += 1
+
+    if factor == 0:
+        return n
     op = math.log(n, 2)
+    if (n % op == 0):
+        return int(op) * 2
     if int(op) >= 1:
         return (int(op) * 2) + 1
-    return int(op) * 2
