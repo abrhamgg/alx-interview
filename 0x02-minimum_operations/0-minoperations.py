@@ -14,6 +14,6 @@ def minOperations(n):
     if n <= 1:
         return 0
     op = math.log(n, 2)
-    if int(op) - 2 >= 1:
+    if int(op) >= 1:
         return (int(op) * 2) + 1
     return int(op) * 2
