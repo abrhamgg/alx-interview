@@ -1,37 +1,47 @@
 #!/usr/bin/python3
-"""script that reads line by line from stdin"""
-import sys
+"""
+a script that reads stdin line by line and computes metrics:
+Input format: <IP Address> - [<date>]
+"GET /projects/260 HTTP/1.1" <status code> <file size>
+"""
+from sys import stdin
 
-count = 0
-status = {"200": 0, "301": 0, "400": 0, "401": 0,
-          "403": 0, "404": 0, "405": 0, "500": 0}
-total = 0
+status_codes = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
+
+file = 0
+
+
+def print_log():
+    """Prints the logs"""
+    print("File size: {}".format(file))
+    for stat in sorted(status_codes.keys()):
+        if status_codes[stat]:
+            print("{}: {}".format(stat, status_codes[stat]))
 
 
 if __name__ == "__main__":
+    count = 1
     try:
-        for line in sys.stdin:
-            sample = line
-            if len(sample.rstrip().split(" ")) != 9:
+        for line in stdin:
+            try:
+                log = line.split()
+                if log[-2] in status_codes:
+                    status_codes[log[-2]] += 1
+                file += int(log[-1])
+            except Exception:
                 pass
-            else:
-                if count == 10:
-                    print("File size: {}".format(total))
-                    for k, v in status.items():
-                        if v != 0:
-                            print("{}: {}".format(k, v))
-                    count = 0
-                else:
-                    sample = sample.rstrip().split(" ")
-                    size = int(sample[8])
-                    if sample[7] in status.keys():
-                        key = sample[7]
-                        status[key] += 1
-                        total += size
-                        count = count + 1
+            if count % 10 == 0:
+                print_log()
+            count += 1
     except KeyboardInterrupt:
-        print("File size: {}".format(total))
-        for k, v in status.items():
-            if v != 0:
-                print("{}: {}".format(k, v))
+        print_log()
         raise
