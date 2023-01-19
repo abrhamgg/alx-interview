@@ -11,8 +11,6 @@ total = 0
 if __name__ == "__main__":
     try:
         for line in sys.stdin:
-            if 'Exit' == line.rstrip():
-                break
             sample = line
             if len(sample.rstrip().split(" ")) != 9:
                 pass
