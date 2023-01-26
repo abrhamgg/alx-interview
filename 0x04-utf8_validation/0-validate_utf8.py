@@ -7,6 +7,8 @@ def validUTF8(data):
     valid UTF-8 encoding"""
     if data:
         for d in data:
-            if len(bin(d)) > 10:
+            if d is int and len(bin(d)) > 10:
+                return False
+            if d is str and len(d) > 8:
                 return False
     return True
