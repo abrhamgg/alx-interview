@@ -5,10 +5,21 @@
 def validUTF8(data):
     """method that determines if a given data set represents a
     valid UTF-8 encoding"""
-    if data:
-        for d in data:
-            if d is int and len(bin(d)) > 10:
+    state = 0
+    for num in data:
+        bit = 0b10000000
+        if not state:
+            while (bit & num):
+                state += 1
+                bit >>= 1
+            if state > 4:
                 return False
-            if d is str and len(d) > 8:
+            if state:
+                state -= 1
+                if state == 0:
+                    return False
+        elif state > 0:
+            if num >> 6 != 2:
                 return False
-    return True
+            state -= 1
+    return not state
