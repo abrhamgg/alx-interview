@@ -80,10 +80,10 @@ if n < 4:
     sys.exit(1)
 
 res = solveNQ(n)
-'''first = res[0]
+first = res[0]
 memory.append(first[0])
-print(first)'''
+print(first)
 for i in res:
     if i[0] not in memory:
         print(i)
-        '''memory.append(i[0])'''
+        memory.append(i[0])
