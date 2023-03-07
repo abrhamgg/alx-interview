@@ -33,7 +33,7 @@ def isWinner(x, nums):
         'Maria': 0,
         'Ben': 0
     }
-    if x == 0:
+    if nums == []:
         return 'Ben'
     for i in nums:
         result = play_game(i)
