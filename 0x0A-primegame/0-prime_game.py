@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 """prime game"""
 
+
 def isPrime(x):
     count = 0
+    if x == 1:
+        return False
     for i in range(2, x):
         if x % i == 0:
             return False
     return True
+
 
 def play_game(n):
     "return 1 if ben wins else return 2 if maria wins"
@@ -22,6 +26,7 @@ def play_game(n):
     else:
         return 2
 
+
 def isWinner(x, nums):
     """determines the winner of the game"""
     players = {
@@ -32,7 +37,9 @@ def isWinner(x, nums):
         result = play_game(i)
         if result == 1:
             players['Ben'] += 1
+            print('Ben')
         elif result == 2:
+            print('Maria')
             players['Maria'] += 1
 
     if players['Maria'] > players['Ben']:
@@ -41,9 +48,3 @@ def isWinner(x, nums):
         return 'Ben'
     else:
         return None
-        
-
-
-x = 3
-nums = [4, 5, 1]
-isWinner(x, nums)
