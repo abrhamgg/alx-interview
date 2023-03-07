@@ -37,9 +37,7 @@ def isWinner(x, nums):
         result = play_game(i)
         if result == 1:
             players['Ben'] += 1
-            print('Ben')
         elif result == 2:
-            print('Maria')
             players['Maria'] += 1
 
     if players['Maria'] > players['Ben']:
