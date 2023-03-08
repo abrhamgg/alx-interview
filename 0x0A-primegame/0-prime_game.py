@@ -3,7 +3,6 @@
 
 
 def isPrime(x):
-    count = 0
     if x == 1:
         return False
     for i in range(2, x):
@@ -34,7 +33,7 @@ def isWinner(x, nums):
         'Ben': 0
     }
     if nums == []:
-        return 'Ben'
+        return None
     for i in nums:
         result = play_game(i)
         if result == 1:
