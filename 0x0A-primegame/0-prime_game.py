@@ -16,9 +16,8 @@ def play_game(n):
     if n == 1:
         return 1
     count = 0
-    board = [i for i in range(1, n + 1)]
-    for b in range(len(board)):
-        if isPrime(board[b]):
+    for i in range(1, n + 1):
+        if isPrime(i):
             count += 1
     if count % 2 == 0:
         return 1
@@ -32,7 +31,7 @@ def isWinner(x, nums):
         'Maria': 0,
         'Ben': 0
     }
-    if nums == []:
+    if nums == [] or x <= 0:
         return None
     for i in nums:
         result = play_game(i)
@@ -47,3 +46,9 @@ def isWinner(x, nums):
         return 'Ben'
     else:
         return None
+'''
+nums = [0] * 10000
+for i in range(10000):
+    nums[i] = i
+print("Winner: {}".format(isWinner(10000, nums)))
+'''
