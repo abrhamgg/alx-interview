@@ -20,6 +20,8 @@ def play_game(n):
     for b in range(len(board)):
         if isPrime(board[b]):
             count += 1
+    print(board)
+    print(count)
     if count % 2 == 0:
         return 1
     else:
@@ -38,7 +40,9 @@ def isWinner(x, nums):
         result = play_game(i)
         if result == 1:
             players['Ben'] += 1
+            print('Ben')
         elif result == 2:
+            print('Maria')
             players['Maria'] += 1
 
     if players['Maria'] > players['Ben']:
@@ -47,3 +51,7 @@ def isWinner(x, nums):
         return 'Ben'
     else:
         return None
+
+x = 3
+nums = [4, 5, 1]
+isWinner(x, nums)
